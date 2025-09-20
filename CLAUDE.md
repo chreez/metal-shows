@@ -1,11 +1,15 @@
 # Metal Shows Tracker - Claude Code Configuration
 
-## Project Overview
-This is an Obsidian vault for tracking metal shows, people met, and band experiences. The vault lives in the `vault/` subdirectory and is gitignored to keep personal data private.
+## Project: Metal Shows Obsidian Tracker
 
-## Architecture
+This project tracks metal shows with single-entry data capture.
+The Obsidian vault lives in ./vault/ subdirectory (gitignored).
 
 ### Directory Structure
+- Project root: ~/workspace/metal-shows (git repo)
+- Obsidian vault: ~/workspace/metal-shows/vault (gitignored)
+- Claude config: Project root (CLAUDE.md, .claude/)
+
 ```
 /metal-shows/               # Git repository root
 ├── vault/                  # Obsidian vault (gitignored)
@@ -16,10 +20,54 @@ This is an Obsidian vault for tracking metal shows, people met, and band experie
 │   └── Templates/          # Obsidian templates
 ├── docs/                   # Documentation
 │   └── spec.md            # Full system specification
+├── .claude/                # Claude commands
 └── CLAUDE.md              # This file
 ```
 
-## Key Features
+### File Boundaries
+- Safe to edit: vault/Shows/, vault/People/, vault/Dashboards/, vault/Quick Capture.md
+- Never modify: vault/Templates/, vault/.obsidian/plugins/
+- Auto-generated: All files in vault/Shows/ and vault/People/
+- Git tracked: CLAUDE.md, .claude/, docs/, README.md
+- Git ignored: vault/ (entire directory)
+
+### Key Principles
+- Quick Capture.md is the ONLY data entry point
+- Never delete Quick Capture.md, only clear its contents
+- All people mentioned as [[Name]] create stub notes automatically
+- Process shows with single button click
+- Dates in YYYY-MM-DD format
+- Shows named "[Date] - [Venue].md"
+- Vault operations always use vault/ prefix in paths
+
+### Obsidian Plugin APIs
+- Templater: Use tp.file.*, tp.date.*, tp.system.*
+- Dataview: Use DataviewJS for complex queries
+- Both plugins must be enabled for system to work
+
+### Testing Checklist
+- [ ] Quick Capture processes correctly
+- [ ] People stubs auto-create
+- [ ] Dashboards show data
+- [ ] Backlinks work for people
+- [ ] Clear function preserves template
+- [ ] All vault files in vault/ subdirectory
+- [ ] No vault data committed to git
+
+### Common Commands
+- Process show: Click Templater button in Quick Capture
+- Find person: Open People Finder dashboard
+- View recent: Open Shows Dashboard
+- Check vault: ls vault/
+
+When working on this vault:
+1. Always work within vault/ subdirectory
+2. Never commit vault/ contents to git
+3. Test processing with sample data
+4. Ensure Dataview queries update live
+5. Check that people backlinks work
+
+## Technical Details
 
 ### 1. Quick Capture System
 - **Entry Point**: `vault/Quick Capture.md` - The ONLY place where new data enters
@@ -40,40 +88,6 @@ The `process-show` Templater script:
 - Person notes track: first met date, shows attended, band roles, social handles
 - Backlinks automatically show all shows where person appears
 
-## Working with the Vault
-
-### Adding New Features
-When enhancing the vault:
-1. Maintain the single-entry-point principle (Quick Capture)
-2. Keep processing logic in Templater scripts
-3. Use Dataview for all queries and dashboards
-4. Store personal data only in `vault/` (gitignored)
-
-### Common Operations
-
-#### Process a Show
-1. Edit `vault/Quick Capture.md`
-2. Add raw notes with [[person names]] in brackets
-3. Run the Templater process-show script
-4. Review the generated show note
-
-#### Find a Person
-1. Open `vault/Dashboards/People Finder.md`
-2. Use Dataview queries to search by name, band, or role
-3. Click through to person note to see all appearances
-
-#### Update Person Details
-1. Navigate to `vault/People/[Name].md`
-2. Add band_role, social_handles, or notes
-3. Backlinks automatically update
-
-### Testing Changes
-When testing vault modifications:
-1. Create test entries in Quick Capture
-2. Process them to verify extraction logic
-3. Check that Dataview queries update correctly
-4. Ensure person stubs are created properly
-
 ## Important Notes
 
 ### Privacy
@@ -90,31 +104,3 @@ Required Obsidian plugins:
 - Shows: `YYYY-MM-DD - Venue Name.md`
 - People: `Person Name.md` (exactly as typed in brackets)
 - Templates: Keep in `vault/Templates/`
-
-## Troubleshooting
-
-### Processing Fails
-- Check that Templater is enabled
-- Verify the process-show script exists
-- Ensure Quick Capture has the correct format
-
-### Missing People
-- Verify names are in `[[double brackets]]`
-- Check `vault/People/` directory for typos
-- Look for duplicate entries with slight variations
-
-### Dataview Not Working
-- Ensure Dataview plugin is enabled
-- Check that frontmatter formatting is correct
-- Verify file paths in queries match structure
-
-## Future Enhancements
-Potential improvements while maintaining core architecture:
-- Band database with genre/origin tracking
-- Venue information and capacity
-- Setlist tracking per show
-- Photo attachments support
-- Social media integration for people
-- Ticket stub scanning
-
-Remember: All enhancements should flow through Quick Capture to maintain the single-entry-point principle.
