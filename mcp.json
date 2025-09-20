@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "metal-shows-vault": {
+      "command": "node",
+      "args": [
+        "/Users/chris/workspace/metal-shows/mcp-server.js"
+      ],
+      "env": {
+        "VAULT_PATH": "/Users/chris/workspace/metal-shows/vault",
+        "INDEX_FOLDERS": "Shows,People",
+        "ENABLE_SEMANTIC_SEARCH": "true"
+      }
+    }
+  }
+}

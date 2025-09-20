@@ -1,0 +1,20 @@
+{
+  "name": "metal-shows-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Metal Shows Obsidian vault semantic search",
+  "main": "mcp-server.js",
+  "scripts": {
+    "start": "node mcp-server.js",
+    "test": "node test-mcp.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

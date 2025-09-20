@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "metal-shows-context": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_STORE_PATH": "./vault/.mcp_memory"
+      }
+    },
+    "metal-shows-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem"
+      ],
+      "env": {
+        "ALLOWED_DIRECTORIES": "./vault/Shows,./vault/People,./vault/Dashboards",
+        "FILE_EXTENSIONS": ".md",
+        "MAX_FILE_SIZE": "100000"
+      }
+    }
+  }
+}

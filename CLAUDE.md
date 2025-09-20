@@ -88,6 +88,34 @@ The `process-show` Templater script:
 - Person notes track: first met date, shows attended, band roles, social handles
 - Backlinks automatically show all shows where person appears
 
+## MCP Server - Semantic Search
+
+### Overview
+The project includes a Model Context Protocol (MCP) server that provides semantic search capabilities for the vault. This enables natural language queries across shows and people.
+
+### Setup
+1. Install dependencies: `npm install`
+2. Test server: `node test-mcp.js`
+3. The server provides tools for:
+   - `search_shows` - Find shows by date, venue, bands, or people
+   - `search_people` - Find people by name, role, or shows attended
+   - `find_connections` - Discover relationships between entities
+   - `get_stats` - Get vault statistics
+
+### Example Queries
+- "Find shows with drummers"
+- "Shows at The Underworld"
+- "People from Void Serpent"
+- "Shows in September 2025"
+- "Who knows Sarah"
+- "Venues with good sound"
+
+### Files
+- `mcp-server.js` - MCP server implementation
+- `mcp.json` - MCP configuration
+- `package.json` - Node dependencies
+- `test-mcp.js` - Test script
+
 ## Important Notes
 
 ### Privacy
@@ -99,6 +127,10 @@ The `process-show` Templater script:
 Required Obsidian plugins:
 - **Templater**: For automation and processing
 - **Dataview**: For queries and dashboards
+
+Node.js dependencies (for MCP):
+- **@modelcontextprotocol/sdk**: MCP protocol implementation
+- **gray-matter**: Parse frontmatter from markdown
 
 ### File Naming
 - Shows: `YYYY-MM-DD - Venue Name.md`

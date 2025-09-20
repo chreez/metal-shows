@@ -1,1 +1,14 @@
+# Obsidian vault (contains personal data)
 vault/
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# MCP cache
+.mcp_cache/
+.mcp_memory/
+
+# OS files
+.DS_Store
+Thumbs.db
