@@ -5,10 +5,18 @@ A streamlined Obsidian vault for tracking metal shows with single-point data ent
 
 ## Core Architecture
 
-### Vault Structure
+### Project Structure
 ```
-/metal-shows-vault/
-├── Templates/
+/metal-shows/                     # Git repo root (public)
+├── docs/
+│   └── spec.md                   # This specification
+├── .gitignore                    # Includes /vault
+├── CLAUDE.md                     # Claude Code configuration
+├── .claude/
+│   └── commands/
+│       └── process-show.md       # Claude Code commands
+└── vault/                        # Obsidian vault (gitignored)
+    ├── Templates/
 │   ├── Show Template.md          # Auto-applied to processed shows
 │   └── Quick Capture Template.md # Minimal template for capture note
 ├── Shows/
