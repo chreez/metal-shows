@@ -58,6 +58,7 @@ The Obsidian vault lives in ./vault/ subdirectory (gitignored).
 - Process show: Click Templater button in Quick Capture
 - Find person: Open People Finder dashboard
 - View recent: Open Shows Dashboard
+- Mobile dashboard: Open Mobile Dashboard
 - Check vault: ls vault/
 
 When working on this vault:
@@ -66,6 +67,7 @@ When working on this vault:
 3. Test processing with sample data
 4. Ensure Dataview queries update live
 5. Check that people backlinks work
+6. Test mobile compatibility with checklist
 
 ## Technical Details
 
@@ -87,6 +89,47 @@ The `process-show` Templater script:
 - Any `[[Name]]` in brackets creates/links to a person note
 - Person notes track: first met date, shows attended, band roles, social handles
 - Backlinks automatically show all shows where person appears
+
+## Mobile Workflow
+
+### Mobile Features
+The vault includes mobile-optimized components for on-the-go capture:
+
+1. **Mobile Dashboard** (`vault/Dashboards/Mobile Dashboard.md`)
+   - Large touch targets (min 44x44px)
+   - One-tap access to Quick Capture
+   - Simplified stats and recent shows
+   - Mobile-friendly navigation
+
+2. **Mobile Quick Capture Template** (`vault/Templates/Mobile Quick Capture.md`)
+   - Form-based input with large fields
+   - Date picker and text areas
+   - Voice input friendly
+   - Auto-saves progress
+
+3. **Mobile Setup Guide** (`docs/mobile-setup.md`)
+   - iOS/Android shortcut instructions
+   - Obsidian Sync configuration
+   - Platform-specific workflows
+   - Troubleshooting guide
+
+4. **Testing Checklist** (`docs/mobile-testing-checklist.md`)
+   - Comprehensive mobile testing steps
+   - Performance benchmarks
+   - Accessibility checks
+   - Platform-specific tests
+
+### Mobile Sync Options
+- Obsidian Sync (paid, recommended)
+- iCloud Drive (iOS/Mac)
+- Syncthing (Android/cross-platform)
+- Git (advanced users)
+
+### Mobile Best Practices
+- Use voice input for quick capture
+- Process shows immediately after event
+- Sync before and after shows
+- Keep mobile vault lightweight
 
 ## MCP Server - Semantic Search
 
